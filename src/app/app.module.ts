@@ -5,16 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { PreciosComponent } from './components/precios/precios.component';
-import { ProtegidaComponent } from './components/protegida/protegida.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PreciosComponent,
-    ProtegidaComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

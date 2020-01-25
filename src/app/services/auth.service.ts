@@ -14,7 +14,7 @@ export class AuthService {
     createAuth0Client({
       domain: 'juan-ruiz.auth0.com',
       client_id: '0dQnNIuqsanjZ73lCrXb6MMg2LxgLjJj',
-      redirect_uri: 'http://localhost:4200'
+      redirect_uri: `${window.location.origin}`
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -71,14 +71,14 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = 'http://localhost:4200') {
+  login(redirectPath: string = '/') {
     // A desired redirect path can be passed to login method
     // (e.g., from a route guard)
     // Ensure Auth0 client instance exists
     this.auth0Client$.subscribe((client: Auth0Client) => {
       // Call method to log in
       client.loginWithRedirect({
-        redirect_uri: 'http://localhost:4200',
+        redirect_uri: `${window.location.origin}`,
         appState: { target: redirectPath }
       });
     });
@@ -118,7 +118,7 @@ export class AuthService {
       // Call method to log out
       client.logout({
         client_id: '0dQnNIuqsanjZ73lCrXb6MMg2LxgLjJj',
-        returnTo: 'http://localhost:4200'
+        returnTo: `${window.location.origin}`
       });
     });
   }

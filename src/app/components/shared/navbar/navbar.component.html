@@ -9,16 +9,13 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="'home'">Home</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="'precios'">Precios</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" *ngIf="authService.userProfile$ | async as profile">
-                <a class="nav-link" [routerLink]="'protegida'">Protegida</a>
+            <li class="nav-item" routerLinkActive="active" *ngIf="authService.loggedIn">
+                <a class="nav-link" [routerLink]="'profile'">Profile</a>
             </li>
         </ul>
         <span class="navbar-text">
-            <button type="button" class="btn btn-outline-success btn-block" (click)="logIn()" *ngIf="authService.loggedIn === false">Log In</button>
-            <button type="button" class="btn btn-outline-success btn-block" (click)="logOut()" *ngIf="authService.userProfile$ | async as profile">Log Out</button>
+            <button type="button" class="btn btn-outline-success btn-block" (click)="logIn()" *ngIf="!authService.loggedIn">Log In</button>
+            <button type="button" class="btn btn-outline-success btn-block" (click)="logOut()" *ngIf="authService.loggedIn">Log Out</button>
         </span>
     </div>
 </nav>

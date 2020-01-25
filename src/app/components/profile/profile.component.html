@@ -1,0 +1,30 @@
+<ng-container *ngIf="authService.userProfile$ | async as profile; else elseTemplate">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="profile.picture" class="img-fluid" alt="Profile picture">
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>{{profile.name}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{profile.email}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Updated at</th>
+                        <td>{{profile.updated_at | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <div class="alert alert-danger" role="alert">
+        No se pudo iniciar sesión correctamente
+    </div>
+</ng-template>
